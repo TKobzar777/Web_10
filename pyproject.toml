@@ -10,6 +10,7 @@ python = "^3.11"
 django = "^5.0.6"
 environ = "^1.0"
 pymongo = "^4.7.3"
+psycopg2 = "^2.9.9"
 
 
 [build-system]

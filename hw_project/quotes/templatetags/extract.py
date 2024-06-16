@@ -7,9 +7,9 @@ from ..utils import get_mongodb
 register = template.Library()
 
 
-def get_author(id_):
+def get_author(author_id):
     db = get_mongodb()
-    author = db.authors.find_one({'id_': ObjectId(id_)})
+    author = db.authors.find_one({'_id': ObjectId(author_id)})
     return author['fullname']
 
 
