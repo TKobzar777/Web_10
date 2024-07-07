@@ -6,5 +6,6 @@ app_name = "quotes"
 
 urlpatterns = [
     path("", views.main, name="root"),
+    path('free-quotes/', views.main, name='quotes'),
     path("<int:page>", views.main, name="root_paginate"),
 ]
