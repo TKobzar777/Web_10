@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'quotes',
-    'app_auth'
+    'app_auth',
+
 
 ]
 
@@ -136,8 +137,8 @@ STATIC_URL = 'static/'
 # MEDIA_URL = "/media/"
 
 LOGIN_URL = "/auth/signin"
-LOGIN_REDIRECT_URL ="/free-quotes/"
-LOGOUT_REDIRECT_URL="/auth/logout"
+LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000'
+# LOGOUT_REDIRECT_URL="/auth/logout"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

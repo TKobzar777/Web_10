@@ -1,0 +1,11 @@
+{% extends 'quotes/base.html' %}
+{% load extract %}
+
+{% block content %}
+  <h2>Add Quote</h2>
+  <form method="post" action="{% url 'quotes:add_quote' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Quote</button>
+  </form>
+{% endblock %}

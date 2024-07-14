@@ -28,3 +28,6 @@ class RegisterView(View):
             messages.success(request, f"Вітаємо {username}. Ваш акаунт успішно створено")
             return redirect(to="app_auth:signin")
         return render(request, self.template_name, {"form": form})
+
+
+

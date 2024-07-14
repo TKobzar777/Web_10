@@ -1,0 +1,11 @@
+{% extends 'quotes/base.html' %}
+{% load extract %}
+
+{% block content %}
+<h2>{{ author.fullname }}</h2>
+<p> Born date - {{ author.born_date }}</p>
+<p> Born location - {{ author.born_location }}</p>
+<h2> More details:</h2>
+<p>{{ author.description }}</p>
+<!-- Другие поля автора, которые вы хотите отобразить -->
+{% endblock %}

@@ -11,6 +11,9 @@ django = "^5.0.6"
 environ = "^1.0"
 pymongo = "^4.7.3"
 psycopg2 = "^2.9.9"
+requests = "^2.32.3"
+beautifulsoup4 = "^4.12.3"
+django-email-users = "^2.0.0"
 
 
 [build-system]

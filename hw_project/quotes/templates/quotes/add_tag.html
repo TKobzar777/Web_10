@@ -1,0 +1,11 @@
+{% extends 'quotes/base.html' %}
+{% load extract %}
+
+{% block content %}
+  <h2>Add Author</h2>
+  <form method="post" action="{% url 'quotes:add_tag' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Author</button>
+  </form>
+{% endblock %}

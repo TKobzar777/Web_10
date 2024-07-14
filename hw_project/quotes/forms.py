@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django import forms
 from django.contrib.auth.models import User
 from django.db import models
-from .models import Author, Quote
+from .models import Author, Quote, Tag
 
 
 class YourRegisterForm(UserCreationForm):
@@ -32,8 +32,13 @@ def register(request):
     return render(request, "registration/register.html", {"form": form})
 
 
-class AuthorForm(forms.ModelForm):
+class TagForm(forms.ModelForm):
+    class Meta:
+        model = Tag
+        fields = ['name']
 
+
+class AuthorForm(forms.ModelForm):
     class Meta:
         model = Author
         fields = ["fullname", "born_date", "born_location", "description"]
@@ -42,12 +47,7 @@ class AuthorForm(forms.ModelForm):
 class QuoteForm(forms.ModelForm):
     class Meta:
         model = Quote
-        fields = ["quote", "author", "tags"]
-
-
-class TagSearchForm(forms.Form):
-    tag_name = forms.CharField(max_length=50)
-
-
-class ScrapingForm(forms.Form):
-    url = forms.URLField(label="URL of the website to scrape")
+        fields = ['quote', 'author', 'tags']
+        widgets = {
+            'tag': forms.CheckboxSelectMultiple()
+        }

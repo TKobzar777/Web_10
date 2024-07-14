@@ -1,11 +1,12 @@
 from django.urls import path
-
-from . import views
+from .views import AddTagView, AddAuthorView, AddQuoteView, AuthDetailView
 
 app_name = "quotes"
 
 urlpatterns = [
-    path("", views.main, name="root"),
-    path('free-quotes/', views.main, name='quotes'),
-    path("<int:page>", views.main, name="root_paginate"),
+    path("add_tag/", AddTagView.as_view(), name='add_tag'),
+    path('add_author/', AddAuthorView.as_view(), name='add_author'),
+    path('add_quote/', AddQuoteView.as_view(), name='add_quote'),
+    path("author/<pk>/", AuthDetailView.as_view(), name="author_detail"),
+
 ]

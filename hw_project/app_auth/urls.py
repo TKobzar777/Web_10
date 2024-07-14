@@ -25,9 +25,3 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(template_name='app_auth/logout.html'), name="logout")
 ]
 
-# urlpatterns = [
-#     path("register/", views.RegisterView.as_view(), name="register"),
-#     path("login/", LoginView.as_view(redirect_authenticated_user=True, template_name='app_auth/login.html',
-#                                      authentication_form=LoginForm), name="login"),
-#     path("logout/", LogoutView.as_view(template_name='app_auth/logout.html'), name="logout")
-# ]
