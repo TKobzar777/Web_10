@@ -16,7 +16,8 @@
                 <div class="tags">
                     Tags:
                     {% for tag in quote.tags.all %}
-                        <span class="badge badge-info">{{ tag.name }}</span>
+
+                        <a class="tag" href="/quotes/tag/{{tag.name}}/">{{tag}}</a>
                     {% endfor %}
                 </div>
                 </div>

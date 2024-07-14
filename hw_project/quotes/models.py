@@ -16,9 +16,13 @@ class Author(models.Model):
 class Tag(models.Model):
     name = models.CharField(max_length=50, null=False, unique=True)
     # popularity = models.IntegerField(default=0)
+    # slug = models.SlugField(max_length=225,unique=True,verbose_name="URL")
 
     def __str__(self):
         return self.name
+
+    # def get_absolute_url(self):
+    #     return reversed('Tag', kwargs={'tags_slug':self.slug})
 
     # def increase_popularity(self):
     #     Tag.objects.filter(id=self.id).update(popularity=F("popularity") + 1)
@@ -31,9 +35,9 @@ class Quote(models.Model):
     created_id = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.quote
+        return self.quote[:50]
 
-    def all_tags(self):
-        return Quote.objects.get(quote=self.quote).tags.all()
+    # def all_tags(self):
+    #     return Quote.objects.get(quote=self.quote).tags.all()
 
 # Create your models here.

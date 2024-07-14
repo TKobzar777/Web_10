@@ -10,14 +10,9 @@ from .models import Quote, Author, Tag
 
 from .utils import get_mongodb
 
-# Create your views here.
-from django.shortcuts import get_object_or_404
-from django.views.generic.base import RedirectView
-from django.views.generic.detail import DetailView
 
 class AuthDetailView(generic.DetailView):
     model = Author
-
 
 """Функция main использовалась для загрузки основной страницы из MongoDB"""
 def main(request, page=1):
@@ -36,6 +31,14 @@ class HomeView(ListView):
     context_object_name = 'quotes'
     paginate_by = 7
 
+class QuotesToTag(ListView):
+    model = Quote
+    template_name = 'home.html'
+    context_object_name = 'quotes'
+    paginate_by = 7
+
+    def get_queryset(self):
+        return Quote.objects.filter(tags__slug=self.kwargs['tags__slug'])
 
 class AddTagView(LoginRequiredMixin, CreateView):
     login_url = "/users/login/"
