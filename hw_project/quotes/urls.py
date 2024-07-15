@@ -8,6 +8,6 @@ urlpatterns = [
     path('add_author/', AddAuthorView.as_view(), name='add_author'),
     path('add_quote/', AddQuoteView.as_view(), name='add_quote'),
     path("author/<pk>/", AuthDetailView.as_view(), name="author_detail"),
-    path("tag/<pk>/", QuotesToTag.as_view(), name="home"),
+    path("tag/<slug:slug>/", QuotesToTag.as_view(), name="home"),
 
 ]

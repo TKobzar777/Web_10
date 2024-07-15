@@ -14,6 +14,7 @@ from .utils import get_mongodb
 class AuthDetailView(generic.DetailView):
     model = Author
 
+
 """Функция main использовалась для загрузки основной страницы из MongoDB"""
 def main(request, page=1):
     db = get_mongodb()
@@ -31,6 +32,7 @@ class HomeView(ListView):
     context_object_name = 'quotes'
     paginate_by = 7
 
+
 class QuotesToTag(ListView):
     model = Quote
     template_name = 'home.html'
@@ -38,7 +40,9 @@ class QuotesToTag(ListView):
     paginate_by = 7
 
     def get_queryset(self):
-        return Quote.objects.filter(tags__slug=self.kwargs['tags__slug'])
+        return Quote.objects.filter(tags__id=self.kwargs['slug'])
+
+
 
 class AddTagView(LoginRequiredMixin, CreateView):
     login_url = "/users/login/"
