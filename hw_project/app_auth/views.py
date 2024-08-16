@@ -1,9 +1,15 @@
+from django.contrib.auth.views import PasswordResetView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views import View
 from django.contrib import messages
+import logging
+
 
 from .forms import RegisterForm
 
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -30,4 +36,15 @@ class RegisterView(View):
         return render(request, self.template_name, {"form": form})
 
 
+class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'app_auth/password_reset.html'
+    email_template_name = 'app_auth/password_reset_email.html'
+
+    html_email_template_name = 'app_auth/password_reset_email.html'
+    success_url = reverse_lazy('app_auth:password_reset_done')
+    success_message = "An email with instructions to reset your password has been sent to %(email)s."
+    subject_template_name = 'app_auth/password_reset_subject.txt'
+
+
+    # form_class=CustomPasswordResetForm,
 
